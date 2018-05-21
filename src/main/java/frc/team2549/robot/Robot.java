@@ -38,7 +38,6 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void disabledPeriodic() {
-		Scheduler.getInstance().add(new Dashboard());
 		Scheduler.getInstance().run();
 	}
 
@@ -66,7 +65,6 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		oi.update();
-		Scheduler.getInstance().add(new Dashboard());
 		Scheduler.getInstance().run();
 	}
 
