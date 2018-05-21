@@ -2,6 +2,7 @@ package frc.team2549.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 
+// Operator Interface
 public class OI {
 	public Joystick ctrl = new Joystick(0);
 	public double driveY, driveX, driveR;

@@ -7,17 +7,20 @@
 
 package frc.team2549.robot;
 
-import frc.team2549.robot.subsystems.Drivetrain;
-
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import frc.team2549.robot.commands.Dashboard;
+import frc.team2549.robot.subsystems.Drivetrain;
+import frc.team2549.robot.subsystems.Sensors;
+
 public class Robot extends TimedRobot {
 	public static OI oi;
 	public static Drivetrain drivetrain = new Drivetrain();
+	public static Sensors sensors = new Sensors();
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -35,6 +38,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void disabledPeriodic() {
+		Scheduler.getInstance().add(new Dashboard());
 		Scheduler.getInstance().run();
 	}
 
@@ -62,6 +66,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		oi.update();
+		Scheduler.getInstance().add(new Dashboard());
 		Scheduler.getInstance().run();
 	}
 
